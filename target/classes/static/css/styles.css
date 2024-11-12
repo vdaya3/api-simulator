@@ -1,0 +1,11 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+header, footer {
+    color: #fff;
+}
+
+footer p {
+    margin: 0;
+}

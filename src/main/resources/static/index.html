@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Simulator</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/styles.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- Header -->
+<header class="bg-primary text-white text-center py-4">
+    <h1>API Simulator Management</h1>
+</header>
+
+<!-- Main Content -->
+<div class="container my-4">
+    <!-- Tabs for Creating and Viewing Endpoints -->
+    <ul class="nav nav-tabs" id="apiSimulatorTabs" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" id="create-tab" data-toggle="tab" href="#create" role="tab">Create Endpoint</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="view-tab" data-toggle="tab" href="#view" role="tab">View Endpoints</a>
+        </li>
+    </ul>
+
+    <div class="tab-content mt-4" id="apiSimulatorContent">
+        <!-- Create Endpoint Tab -->
+        <div class="tab-pane fade show active" id="create" role="tabpanel">
+            <form id="createEndpointForm">
+                <div class="form-group">
+                    <label for="projectName">Project Name</label>
+                    <input type="text" class="form-control" id="projectName" required>
+                </div>
+                <div class="form-group">
+                    <label for="path">Endpoint Path</label>
+                    <input type="text" class="form-control" id="path" required>
+                </div>
+                <div class="form-group">
+                    <label for="method">HTTP Method</label>
+                    <select class="form-control" id="method" required>
+                        <option>GET</option>
+                        <option>POST</option>
+                        <option>PUT</option>
+                        <option>DELETE</option>
+                    </select>
+                </div>
+
+                <!-- Headers Section -->
+                <div class="form-group">
+                    <label>Headers (Optional)</label>
+                    <div id="headersContainer">
+                        <div class="input-group mb-2">
+                            <input type="text" class="form-control" placeholder="Header Key">
+                            <input type="text" class="form-control" placeholder="Header Value">
+                            <div class="input-group-append">
+                                <button type="button" class="btn btn-danger" onclick="removeHeader(this)">Remove</button>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-secondary" onclick="addHeader()">Add Header</button>
+                </div>
+
+                <div class="form-group">
+                    <label for="successStatus">Success Status</label>
+                    <input type="number" class="form-control" id="successStatus" value="200" required>
+                </div>
+                <div class="form-group">
+                    <label for="successResponse">Success Response</label>
+                    <textarea class="form-control" id="successResponse" rows="3" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="errorStatus">Error Status</label>
+                    <input type="number" class="form-control" id="errorStatus" value="400" required>
+                </div>
+                <div class="form-group">
+                    <label for="errorResponse">Error Response</label>
+                    <textarea class="form-control" id="errorResponse" rows="3" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Create Endpoint</button>
+            </form>
+        </div>
+
+        <!-- View Endpoints Tab -->
+        <div class="tab-pane fade" id="view" role="tabpanel">
+            <div class="form-group">
+                <label for="viewProjectName">Project Name</label>
+                <input type="text" class="form-control" id="viewProjectName" placeholder="Enter project name to view endpoints">
+                <button type="button" class="btn btn-primary mt-2" onclick="viewEndpoints()">View Endpoints</button>
+            </div>
+            <div id="endpointsList" class="mt-4">
+                <!-- Endpoints will be loaded here dynamically -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="bg-dark text-white text-center py-3">
+    <p>API Simulator &copy; 2024</p>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+<script src="/js/app.js"></script>
+</body>
+</html>
